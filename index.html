@@ -40,6 +40,7 @@
 
 
 <link id="pagestyle" href="./assets/css/soft-design-system.css?v=1.0.9" rel="stylesheet" />
+<link href="./assets/css/filtro.css" rel="stylesheet" />
 
 
 
@@ -287,12 +288,12 @@
 
 
 <header class="header-2">
-  <div class="page-header min-vh-75 relative" style="background-image: url('./assets/img/curved-images/curved1.jpg')">
+  <div class="page-header min-vh-75 relative" style="background-image: url('./assets/img/curved-images/brinquedo.jpg')">
     <div class="container">
       <div class="row">
         <div class="col-lg-7 text-center mx-auto">
-          <h1 class="text-white pt-3 mt-n5">Promoções imperdíveis </h1>
-          <p class="lead text-white mt-3">Só aqui você acha o que procura com o maior desconto!<br/> Não perca tempo e aproveite tudo de melhor da nossa loja!! </p>
+          <h1 class="text-black pt-3 mt-n5">Promoções imperdíveis </h1>
+          <p class="lead text-black mt-3">Só aqui você acha o que procura com o maior desconto!<br/> Não perca tempo e aproveite tudo de melhor da nossa loja!! </p>
         </div>
       </div>
     </div>
@@ -351,53 +352,89 @@
   </div>
 </section>
 
-<section>
 
-</section>
-
+<!-- tabela do banco de dados -->
 
 <section class="pt-3 pb-3" id="count-stats">
   <div class="container">
     <div class="row ">
-      <div class="card" style="width: 15rem;">
-        <img src="assets/img/curved-images/teste1.webp" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+      <table>
+        <div class="filtro">
+          <div class="centerfiltro">
+            <svg width="16" height="13" viewBox="0 0 14 17" fill="none" xmlns="http://www.w3.org/2000/svg" class="IconSort"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.88883 3.77821L4.33328 0.222656L0.777723 3.77821L3.44439 3.77821L3.44439 10.0004L5.22217 10.0004L5.22217 3.77821L7.88883 3.77821ZM9.66661 16.2227L13.2222 12.6671L10.5555 12.6671L10.5555 6.44488L8.77772 6.44488L8.77772 12.6671L6.11106 12.6671L9.66661 16.2227Z" fill="#FF6500"></path></svg>
+            <label for="ordenar"> Ordenar: </label>
+            <select class="form-control" style="width: 15rem;">
+              <option value="escolha">Escolha</option>
+              <option value="precoCrescente">Preço Crescente</option>
+              <option value="precoDecrescente">Preço Decrescente</option>
+            </select>
+          </div>
+          <div class="centerfiltro">
+            <label for="exibir">Exibir:</label>
+            <select class="form-control" style="width: 15rem;">
+              <option value="escolha">Escolha</option>
+              <option value="20pag">20 Produtos</option>
+              <option value="40pag">40 Produtos</option>
+              <option value="60pag">60 Produtos</option>
+              <option value="100pag">100 Produtos</option>
+            </select>
+          </div>
+          <div class="centerfiltro">
+            <label for="pesquisa">Pesquisa:</label>
+            <input class="form-control" style="width: 15rem;" id="myInput" type="text" placeholder="Procurar..">
+          </div>
+          
         </div>
-      </div>
-      <div class="card" style="width: 15rem;">
-        <img src="assets/img/curved-images/teste2.webp" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-      <div class="card" style="width: 15rem;">
-        <img src="assets/img/curved-images/teste3.webp" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-      <div class="card" style="width: 15rem;">
-        <img src="assets/img/curved-images/teste4.webp" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
+          <tbody id="myTable">
+            <td>
+              <div class="card" style="width: 15rem;">
+                <img src="assets/img/curved-images/teste1.webp" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <p class="card-number" >15,00</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="card" style="width: 15rem;">
+                <img src="assets/img/curved-images/teste2.webp" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <p class="card-number" >15,90</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="card" style="width: 15rem;">
+                <img src="assets/img/curved-images/teste3.webp" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <p class="card-number" >15,90</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="card" style="width: 15rem;">
+                <img src="assets/img/curved-images/teste4.webp " class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <p class="card-number" >15,90</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </td>
+          </tbody>
+      </table>
     </div>
   </div>
 </section>
-
-
-  
-
   
   
 
@@ -641,6 +678,17 @@
 
 
 <script type="text/javascript">
+
+  //filtro tabela
+
+  $(document).ready(function(){
+    $("#myInput").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#myTable tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
 
   if (document.getElementById('state1')) {
     const countUp = new CountUp('state1', document.getElementById("state1").getAttribute("countTo"));
