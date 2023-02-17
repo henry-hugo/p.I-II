@@ -1,5 +1,49 @@
 <!DOCTYPE html>
 <html lang="pt-br" itemscope itemtype="http://schema.org/WebPage">
+  <script async="" data-js="simulator-extension" src="https://www.google-analytics.com/analytics.js"></script>
+  <script type="text/javascript" data-js="simulator-extension" id="mobile-simulator">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.dataset.js='simulator-extension';a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','simulatorGA');
+    simulatorGA('create', 'UA-165373703-1', 'auto');
+    simulatorGA('set', 'dimension1', '3.8.2');
+    simulatorGA('set', 'dimension3', '16/02/2023');
+    simulatorGA('set', 'dimension4', 'lkS_W_i5pwj');
+    simulatorGA('set', 'dimension5', 'day');</script>
+    <script type="text/javascript" id="mobile-simulator">  
+      let filterInsertion = function(detail) {
+        if((detail.nodeName === 'SCRIPT' || detail.nodeName === 'IFRAME' || detail.nodeName === 'DIV') && detail.dataset && detail.dataset.js === 'simulator-extension')
+          return true;
+        else if(detail.nodeName !== 'SCRIPT' && detail.nodeName !== 'IFRAME' && detail.nodeName !== 'DIV')
+          return true;
+      }
+      let appendChildHtmlFunction = HTMLElement.prototype.appendChild;
+      HTMLElement.prototype.appendChild = function(detail) {
+        if(filterInsertion(detail))
+          appendChildHtmlFunction.apply(this, arguments);
+      }
+      let appendChildFunction = Node.prototype.appendChild;
+      Node.prototype.appendChild = function(detail) {
+        if(filterInsertion(detail))
+          appendChildFunction.apply(this, arguments);
+      }
+      let insertBeforeFunction = Node.prototype.insertBefore;
+      Node.prototype.insertBefore = function(detail) {
+        if(filterInsertion(detail))
+          insertBeforeFunction.apply(this, arguments);
+      }
+      let insertAdjacentElementFunction = Element.prototype.insertAdjacentElement;
+      Element.prototype.insertAdjacentElement = function(detail) {
+        if(filterInsertion(detail))
+          insertAdjacentElementFunction.apply(this, arguments);
+      }
+      let insertAdjacentHTMLFunction = Element.prototype.insertAdjacentHTML;
+      Element.prototype.insertAdjacentHTML = function(detail) {
+        if(filterInsertion(detail))
+          insertAdjacentHTMLFunction.apply(this, arguments);
+      }
+    </script>
 
 <head>
 
