@@ -10,22 +10,13 @@ use App\Http\Controllers\CarrinhoController;
 // });
 
 // criar uma rota do controller
-Route::match(['get','post'],'/',[UsuarioController::class,'create'])->name('produto.index');
-
-Route::post('/',[UsuarioController::class,'store'])->name('registrar');
-
-//
-Route::get('/produto/{produto}',[ProdutoController::class, 'show'])->name('produto.show');
-Route::match(['get','post'],'/categoria/{categoria}',[ProdutoController::class,'categoria'])->name('produto.categoria');
-
-route::post('/carrinho/{produto}',[CarrinhoController::class,'store'])->name('carrinho.store'); 
-route::get('/carrinho', [CarrinhoController::class, 'index'])->name('carrinho.index');
-
-route::get('/carrinho/pagamento', [CarrinhoController::class, 'pagamento'])->name('carrinho.pagamento');
+Route::get('/dashboard/produto', [ProdutoController::class, 'index'])->name('dashboard.produto');
+Route::get('/dashboard/{produto}', [ProdutoController::class, 'show'])->name('dashboard.show');
+route::post('/dashboard/{produto}',[ProdutoController::class,'store'])->name('dashboard.store'); 
 
 Route::get('/', function () {
-    return view('produto.index');
-})->middleware(['auth', 'verified'])->name('produto.index');
+    return view('dashboard.index');
+})->middleware(['auth', 'verified'])->name('dashboard.index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

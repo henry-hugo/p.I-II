@@ -42,8 +42,8 @@ class LoginRequest extends FormRequest
     public function authenticate(): void
     {
         $this->ensureIsNotRateLimited();
-        $user = User::where('USUARIO_EMAIL', $this->email)->first();
-        if ($user && Hash::check($this->password, $user->USUARIO_SENHA)) {
+        $user = User::where('ADM_EMAIL', $this->email)->first();
+        if ($user && Hash::check($this->password, $user->ADM_SENHA)) {
             Auth::login($user);
         }else{
             throw ValidationException::withMessages([

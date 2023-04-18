@@ -11,7 +11,10 @@ class Produto extends Model
     use HasFactory;
     protected $table = "PRODUTO";
     protected $primaryKey = "PRODUTO_ID";
+    protected $fillable = ['PRODUTO_NOME', 'PRODUTO_DESC','PRODUTO_PRECO','PRODUTO_DESCONTO','ADM_ATIVO'];
 
+    public $timestamps = false;
+    
     public function ProdutoImagem(){
         return $this->hasMany(ProdutoImagem::class, 'PRODUTO_ID','PRODUTO_ID');
     }

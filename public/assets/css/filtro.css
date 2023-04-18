@@ -676,3 +676,10 @@ section.endereco{
   width: 38rem !important;
   
 }
+.ajust{
+  display: flex !important;
+    align-content: center !important;
+    justify-content: space-around !important;
+    flex-wrap: wrap !important;
+    align-items: center;
+}

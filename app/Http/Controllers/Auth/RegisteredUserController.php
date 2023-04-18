@@ -25,7 +25,7 @@ class RegisteredUserController extends Controller
     {
         $produtos = Produto::all();
         $categorias = Categoria::all();
-        return view('produto.index')->with('categorias',$categorias,)->with('produtos',$produtos);
+        return view('dashboard')->with('categorias',$categorias,)->with('produtos',$produtos);
     }
 
     /**
@@ -40,15 +40,6 @@ class RegisteredUserController extends Controller
         //     'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
         //     'password' => ['required', 'confirmed', Rules\Password::defaults()],
         // ]);
-        if($request->USUARIO_CPF){
-            dd($request->USUARIO_CPF);
-            $user = User::create([   
-                'USUARIO_NOME' => $request->USUARIO_NOME,
-                'USUARIO_EMAIL' => $request->USUARIO_EMAIL,
-                'USUARIO_SENHA' => Hash::make($request->USUARIO_SENHA),
-                'USUARIO_CPF' => $request->USUARIO_CPF,
-            ]);
-        }else{
             
             $user = Administrador::create([
                 'ADM_NOME' => $request->nome,
@@ -57,11 +48,11 @@ class RegisteredUserController extends Controller
                 'ADM_ATIVO'=> 1,
                  ]);
             
-        }
+        
 
         event(new Registered($user));
        
-        Auth::login($user);
+       
 
         return redirect(RouteServiceProvider::HOME);
     }
