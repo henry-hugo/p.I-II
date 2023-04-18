@@ -1,0 +1,75 @@
+<?php
+
+namespace App\Http\Controllers;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Produto;
+use App\Models\Categoria;
+use App\Models\Usuario;
+
+class UsuarioController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+    
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        $produtos = Produto::all();
+        $categorias = Categoria::all();
+        return view('produto.index')->with('categorias',$categorias,)->with('produtos',$produtos);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function   store(Request $request){
+          Usuario::create([
+         'USUARIO_NOME' => $request->USUARIO_NOME,
+         'USUARIO_EMAIL' => $request->USUARIO_EMAIL,
+         'USUARIO_SENHA' => $request->USUARIO_SENHA,
+         'USUARIO_CPF' => $request->USUARIO_CPF,
+          ]);
+        
+        return redirect()->route('produto.index');
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
+    }
+}
