@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Produto;
 use App\Models\Categoria;
+use App\Models\ProdutoImagem;
+use App\Models\ProdutoEstoque;
 
 class ProdutoController extends Controller
 {
@@ -39,6 +41,49 @@ class ProdutoController extends Controller
             ]);
             return redirect(route('dashboard.produto'));
         }
+    }
+    public function delete(Request $request , $produto){
+        $item = Produto::where('PRODUTO_ID', $produto)->first();
+        if($item){
+            $item->update([
+                "PRODUTO_ATIVO" => 0,
+            ]);
+            $item->save();
+            return redirect(route('dashboard.produto'));
+        }
+    }
+    public function cadastroP(){
+        $produtos = Produto::all();
+        $categorias = Categoria::all();
+        return view('dashboard.cadastroProduto')->with('produto', $produtos)->with('categorias',$categorias); ;
+    }
+
+    public function create(Request $request){
+
+        $creatP = Produto::create([
+
+                "PRODUTO_NOME" => $request->nome,
+                "PRODUTO_DESC" => $request->desc,
+                "PRODUTO_PRECO" => (float)$request->preco,
+                "PRODUTO_DESCONTO" => (float)$request->desconto,
+                "CATEGORIA_ID" => (int)$request->categoria,
+                "PRODUTO_ATIVO" => 1,
+             ]);
+            $creatP->save();
+            $id = $creatP["PRODUTO_ID"];
+
+        $creatI = ProdutoImagem::create([
+                "IMAGEM_ORDEM"=>(int)$request->ordem,
+                "PRODUTO_ID"=>  (int)$id,
+                "IMAGEM_URL"=>$request->url
+        ]);
+        $creatI->save();
+        $creatE = ProdutoEstoque::create([
+            "PRODUTO_ID"=>(int)$id,
+            "PRODUTO_QTD"=>$request->estoque
+    ]);
+
+            return redirect(route('dashboard.produto'));
     }
     
 }

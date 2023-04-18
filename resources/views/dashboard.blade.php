@@ -24,8 +24,6 @@
                 </div>
         </form>
     </div>
-    <div>
-        <a href="">Cadastra-se</a>
-    </div>
+    
 </div>
 @endsection

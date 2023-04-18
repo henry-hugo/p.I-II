@@ -2,6 +2,7 @@
 @section('main')
 <section class="container">
     <h1>PRODUTO</h1>
+    <a href="{{route('dashboard.cadastroProduto')}}">Cadastra Produto</a>
     <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -9,6 +10,7 @@
       <th scope="col">PRODUTO</th>
       <th scope="col">DESCRIÇAO</th>
       <th scope="col">PREÇO</th>
+      <th scope="col">ATIVO</th>
       <th scope="col">EDITAR</th>
       <th scope="col">EXCLUIR</th>
     </tr>
@@ -20,9 +22,14 @@
       <td>{{Str::substr(($produto->PRODUTO_NOME), 0, 18)}}</td>
       <td>{{Str::substr(($produto->PRODUTO_DESC), 0, 18)}}</td>
       <td>{{$produto->PRODUTO_PRECO}}</td>
-      <td><a href="/dashboard/{{$produto->PRODUTO_ID}}">editar</a></td>
-      <td><a href="http://">excluir</a></td>
+      <td>{{$produto->PRODUTO_ATIVO}}</td>
+      <td><a href="/dashboard/{{$produto->PRODUTO_ID}}">Editar</a></td>
+      <form action="{{route('delete',$produto->PRODUTO_ID)}}" method="post">
+        @csrf
+        <td><button type="submit">Excluir</button></td>
+      </form>
     </tr>
+
     @endforeach
     
   </tbody>

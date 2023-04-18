@@ -62,6 +62,7 @@
 </head>
 
 <body class="index-page">
+    @if (Auth::check())
 <header class="py-3 mb-3 border-bottom">
     <div class="ajust">
     <a href="{{route('dashboard.index')}}"><img src="/assets/img/logo.png" alt="logo" width="80rem"></a>
@@ -96,6 +97,7 @@
       </div>
     </div>
   </header>
+  @endif
     <main>
         @yield('main')
     </main>
