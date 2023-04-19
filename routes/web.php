@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\CarrinhoController;
+use App\Http\Controllers\CategoriaController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -17,7 +18,12 @@ route::post('/create',[ProdutoController::class,'create'])->name('dashboard.crea
 route::post('/dashboard/{produto}',[ProdutoController::class,'store'])->name('dashboard.store'); 
 route::post('/delete/{produto}',[ProdutoController::class,'delete'])->name('delete'); 
 
-Route::get('/dashboard/categoria', [CategoriaController::class, 'index'])->name('dashboard.categoria');
+Route::get('\dashboard\categorias\index', [CategoriaController::class, 'index'])->name('dashboard.categoria');
+Route::get('/dashboard/categorias/{categoria}', [CategoriaController::class, 'show'])->name('dashboard.showC');
+route::post('/dashboard/categorias/{categoria}',[CategoriaController::class,'store'])->name('categoria.store');
+route::post('/delete/categorias/{categoria}',[CategoriaController::class,'delete'])->name('delete.categoria');
+Route::get('\dashboard\categorias\cadastroCategoria', [CategoriaController::class, 'cadastroC'])->name('dashboard.cadastroCategoria');
+route::post('/categoria/create',[CategoriaController::class,'create'])->name('categoria.create');
 
 
 Route::get('/', function () {

@@ -23,10 +23,10 @@
       <td>{{Str::substr(($produto->PRODUTO_DESC), 0, 18)}}</td>
       <td>{{$produto->PRODUTO_PRECO}}</td>
       <td>{{$produto->PRODUTO_ATIVO}}</td>
-      <td><a href="/dashboard/{{$produto->PRODUTO_ID}}">Editar</a></td>
+      <td><a href="{{route('dashboard.show',$produto->PRODUTO_ID)}}">Editar</a></td>
       <form action="{{route('delete',$produto->PRODUTO_ID)}}" method="post">
         @csrf
-        <td><button type="submit">Excluir</button></td>
+        <td><button class="btn" type="submit">Excluir</button></td>
       </form>
     </tr>
 
