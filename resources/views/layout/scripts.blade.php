@@ -101,7 +101,9 @@
     <main>
         @yield('main')
     </main>
+<footer style="height: 20vh; ">
 
+</footer>
 
 </body>
 <script type="text/javascript">

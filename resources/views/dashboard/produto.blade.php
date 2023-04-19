@@ -1,8 +1,8 @@
 @extends('layout.scripts')
 @section('main')
 <section class="container">
-    <h1>PRODUTO</h1>
-    <a href="{{route('dashboard.cadastroProduto')}}">Cadastra Produto</a>
+    <h1 class="text-center" >PRODUTO</h1>
+    <a class="btn" href="{{route('dashboard.cadastroProduto')}}">Cadastra Produto</a>
     <table class="table">
   <thead class="thead-dark">
     <tr>

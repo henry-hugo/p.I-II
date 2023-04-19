@@ -15,11 +15,17 @@ class ProdutoController extends Controller
         $categorias = Categoria::all();
         return view('dashboard.produto')->with('produtos',$produtos);
     }
+
+
     public function show(Produto $produto){
-        // ver os dados do banco  dd($produto);
+          
         $categorias = Categoria::all();
+
         return view('dashboard.show')->with('produto', $produto)->with('categorias',$categorias);
     }
+
+
+
 
     public function categoria(Request $request, $categoria){
         $produtos = Produto::all()->where("CATEGORIA_ID", $categoria);
@@ -27,11 +33,13 @@ class ProdutoController extends Controller
         return view('produto.categoria')->with('produtos', $produtos);
     }
 
-    public function store(Request $request , $produto){
+
+
+    public function store(Request $request , $produtoId){
         
-        $item = Produto::where('PRODUTO_ID', $produto)->first();
-        if($item){
-            $item =$item->update([
+        $produto = Produto::find($produtoId);
+        if($produto){
+           $produto->update([
                 "PRODUTO_NOME" => $request->nome,
                 "PRODUTO_DESC" => $request->desc,
                 "PRODUTO_PRECO" => (float)$request->preco,
@@ -39,9 +47,29 @@ class ProdutoController extends Controller
                 "CATEGORIA_ID" => (int)$request->categoria,
                 "PRODUTO_ATIVO" => 1,
             ]);
-            return redirect(route('dashboard.produto'));
+            $produto->save();
+            $imagem = $produto->ProdutoImagem[0];
+            if($imagem){
+                $imagem->update([
+                    "IMAGEM_ORDEM"=>(int) $request->ordem,
+                    "IMAGEM_URL"=>$request->url
+                ]);
+                $imagem->save();
+            }
+            $estoque = $produto->ProdutoEstoque[0];
+            if($estoque){
+                $estoque->update([
+                    "PRODUTO_QTD"=>(int)$request->estoque,
+                ]);
+                $estoque->save();
+            }
         }
+
+        return redirect(route('dashboard.produto'));
     }
+
+
+
     public function delete(Request $request , $produto){
         $item = Produto::where('PRODUTO_ID', $produto)->first();
         if($item){

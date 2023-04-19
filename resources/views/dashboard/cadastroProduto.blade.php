@@ -26,7 +26,7 @@
             @endforeach
         </select>
         <br>
-        <input class="btn" type="submit" value="Editar">
+        <input class="btn" type="submit" value="Cadastrar">
         </form>
 </section>
 
