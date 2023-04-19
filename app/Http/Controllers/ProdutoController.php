@@ -36,6 +36,7 @@ class ProdutoController extends Controller
 
 
     public function store(Request $request , $produtoId){
+       
         
         $produto = Produto::find($produtoId);
         if($produto){
@@ -48,21 +49,46 @@ class ProdutoController extends Controller
                 "PRODUTO_ATIVO" => 1,
             ]);
             $produto->save();
-            $imagem = $produto->ProdutoImagem[0];
-            if($imagem){
-                $imagem->update([
-                    "IMAGEM_ORDEM"=>(int) $request->ordem,
-                    "IMAGEM_URL"=>$request->url
+            $arrayImagem = json_decode($produto->ProdutoImagem, true);
+                if (array_key_exists('0', $arrayImagem) && is_array($arrayImagem['0'])){
+                    $imagem = $produto->ProdutoImagem[0];
+                    if($imagem){
+                        $imagem->update([
+                                "IMAGEM_ORDEM"=>(int) $request->ordem,
+                                "IMAGEM_URL"=>$request->url
+                        ]);
+                        $imagem->save();
+                    }  
+                }else{
+                    $creatI = ProdutoImagem::create([
+                        "IMAGEM_ORDEM"=>(int)$request->ordem,
+                        "PRODUTO_ID"=>  (int)$produtoId,
+                        "IMAGEM_URL"=>$request->url
+                    ]);
+                    $creatI->save();
+                }
+            
+           
+                
+            $arrayEstoque = json_decode($produto->ProdutoEstoque, true);
+            if (array_key_exists('0', $arrayEstoque) && is_array($arrayEstoque['0'])){
+                $estoque = $produto->ProdutoEstoque[0];
+                if($estoque){
+                    $estoque->update([
+                        "PRODUTO_QTD"=>(int)$request->estoque,
+                    ]);
+                    $estoque->save();
+                }
+            }else {
+                $creatE = ProdutoEstoque::create([
+                    "PRODUTO_ID"=>(int)$produtoId,
+                    "PRODUTO_QTD"=>$request->estoque
                 ]);
-                $imagem->save();
-            }
-            $estoque = $produto->ProdutoEstoque[0];
-            if($estoque){
-                $estoque->update([
-                    "PRODUTO_QTD"=>(int)$request->estoque,
-                ]);
-                $estoque->save();
-            }
+                $creatE->save();
+                
+                }
+            
+            
         }
 
         return redirect(route('dashboard.produto'));

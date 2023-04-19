@@ -1,6 +1,7 @@
 @extends('layout.scripts') 
 @section('main')
 <section class="container">
+    <h1  class="text-center">CADASTRO</h1>
     <form action="{{route('dashboard.create')}}" method="post">
         @csrf
         <label for="nome">Produto :</label>

@@ -14,14 +14,29 @@
         <label for="preco">Desconto :</label>
         <input  class="form-control" type="number" name="desconto" id="" value="{{$produto->PRODUTO_DESCONTO}}">
         <label for="preco">Ordem :</label>
-        <input  class="form-control" type="number" name="ordem" id="" value="{{$produto->ProdutoImagem[0]->IMAGEM_ORDEM}}"> 
+        
+        @if(!empty($produto->ProdutoImagem[0]->IMAGEM_ORDEM))
+            <input  class="form-control" type="number" name="ordem" id="" value="{{$produto->ProdutoImagem[0]->IMAGEM_ORDEM}}">
+        @else
+            <input  class="form-control" type="number" name="ordem" id="" value="0">
+        @endif
         <label for="nome">Imagem url :</label>
-        <input  class="form-control" type="text"  name="url" value="{{$produto->ProdutoImagem[0]->IMAGEM_URL}}">
+        @if(!empty($produto->ProdutoImagem[0]->IMAGEM_URL))
+            <input  class="form-control" type="text"  name="url" value="{{$produto->ProdutoImagem[0]->IMAGEM_URL}}">
+        @else
+            <input  class="form-control" type="text"  name="url">
+        @endif
         <label for="preco">Estoque :</label>
+        @if(!empty($produto->ProdutoEstoque[0]->PRODUTO_QTD))
         <input  class="form-control" type="number" name="estoque" id="" value="{{$produto->ProdutoEstoque[0]->PRODUTO_QTD}}"> 
+        @else
+        <input  class="form-control" type="number" name="estoque" id="" value="0">
+        @endif
+        
         <label for="categoria">Categoria :</label>
         
         <select class="form-control" name="categoria" id="">
+            <option value="{{$produto->Categoria->CATEGORIA_ID}}">{{$produto->Categoria->CATEGORIA_NOME}}</option>
         @foreach(App\Models\Categoria::where('CATEGORIA_ATIVO', 1)->get() as $categoria)
             <option value="{{$categoria->CATEGORIA_ID}}">{{$categoria->CATEGORIA_NOME}}</option>
             @endforeach

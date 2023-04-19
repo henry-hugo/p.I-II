@@ -17,6 +17,9 @@ route::post('/create',[ProdutoController::class,'create'])->name('dashboard.crea
 route::post('/dashboard/{produto}',[ProdutoController::class,'store'])->name('dashboard.store'); 
 route::post('/delete/{produto}',[ProdutoController::class,'delete'])->name('delete'); 
 
+Route::get('/dashboard/categoria', [CategoriaController::class, 'index'])->name('dashboard.categoria');
+
+
 Route::get('/', function () {
     return view('dashboard.index');
 })->middleware(['auth', 'verified'])->name('dashboard.index');
