@@ -8,7 +8,7 @@
             <label for="nome">Nome :</label>
             <input  class="form-control" type="text"  name="nome" value="{{$user->ADM_NOME}}">
             <label for="email">Email :</label>
-            <input  class="form-control" type="text" name="email" id="" value="{{$user->ADM_EMAIL}}" readonly>
+            <input  class="form-control" type="text" name="email" id="" value="{{$user->ADM_EMAIL}}" >
             <label for="nome">Senha :</label>
             <input  class="form-control" type="password"  name="senha" value="novasenha">
             <br>

@@ -11,7 +11,7 @@
         <label for="nome">Senha :</label>
         <input  class="form-control" type="password"  name="senha">  
         <br>
-        <input class="btn" type="submit" value="Editar">
+        <input class="btn" type="submit" value="Cadastrar">
     </form>
 </section>
 @endsection

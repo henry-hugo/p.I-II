@@ -79,9 +79,7 @@
             <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
           </a>
           <ul class="dropdown-menu text-small shadow" style="">
-            <li><a class="dropdown-item" href="#">New project...</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><a class="dropdown-item" href="#">{{Auth::User()->ADM_NOME}}</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><form  class="dropdown-item" method="POST" action="{{ route('logout') }}">
                     @csrf

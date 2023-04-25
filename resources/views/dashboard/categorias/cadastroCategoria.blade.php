@@ -6,8 +6,8 @@
         @csrf
         <label for="nome">Categoria :</label>
         <input  class="form-control" type="text"  name="nome">  
-        <label for="email">Descriçao :</label>
-        <input  class="form-control" type="text" name="desc" id="">   
+        <label for="desc">Descrição :</label>
+        <input  class="form-control" type="text" name="desc" >   
         <br>
         <input class="btn" type="submit" value="Editar">
     </form>

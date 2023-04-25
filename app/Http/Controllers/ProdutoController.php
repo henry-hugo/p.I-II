@@ -103,8 +103,9 @@ class ProdutoController extends Controller
                 "PRODUTO_ATIVO" => 0,
             ]);
             $item->save();
-            return redirect(route('dashboard.produto'));
+            
         }
+        return redirect(route('dashboard.produto'));
     }
     public function cadastroP(){
         $produtos = Produto::all();
@@ -136,6 +137,7 @@ class ProdutoController extends Controller
             "PRODUTO_ID"=>(int)$id,
             "PRODUTO_QTD"=>$request->estoque
     ]);
+    $creatE->save();
 
             return redirect(route('dashboard.produto'));
     }

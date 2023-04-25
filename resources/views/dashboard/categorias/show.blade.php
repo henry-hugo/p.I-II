@@ -7,8 +7,8 @@
             @csrf
             <label for="nome">Nome :</label>
             <input  class="form-control" type="text"  name="nome" value="{{$categoria->CATEGORIA_NOME}}">
-            <label for="email">Descriçao :</label>
-            <input  class="form-control" type="text" name="desc" id="" value="{{$categoria->CATEGORIA_DESC}}">
+            <label for="desc">Descrição :</label>
+            <input  class="form-control" type="text" name="desc"  value="{{$categoria->CATEGORIA_DESC}}">
             <br>
             <input class="btn" type="submit" value="Editar">
         </form>

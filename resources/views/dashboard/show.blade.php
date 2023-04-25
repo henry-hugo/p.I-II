@@ -7,7 +7,7 @@
         @csrf
         <label for="nome">Nome :</label>
         <input  class="form-control" type="text"  name="nome" value="{{$produto->PRODUTO_NOME}}">
-        <label for="email">Descriçao :</label>
+        <label for="email">Descrição :</label>
         <input  class="form-control" type="text" name="desc" id="" value="{{$produto->PRODUTO_DESC}}">
         <label for="preco">Preço :</label>
         <input  class="form-control" type="number" name="preco" id="" value="{{$produto->PRODUTO_PRECO}}">

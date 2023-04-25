@@ -18,7 +18,7 @@ Route::get('/dashboard.cadastroProduto', [ProdutoController::class, 'cadastroP']
 route::post('/create',[ProdutoController::class,'create'])->name('dashboard.create');
 route::post('/dashboard/{produto}',[ProdutoController::class,'store'])->name('dashboard.store'); 
 route::post('/delete/{produto}',[ProdutoController::class,'delete'])->name('delete'); 
-
+ 
 Route::get('\dashboard\categorias\index', [CategoriaController::class, 'index'])->name('dashboard.categoria');
 Route::get('/dashboard/categorias/{categoria}', [CategoriaController::class, 'show'])->name('dashboard.showC');
 route::post('/dashboard/categorias/{categoria}',[CategoriaController::class,'store'])->name('categoria.store');
