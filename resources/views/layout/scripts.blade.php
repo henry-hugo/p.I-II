@@ -70,7 +70,7 @@
       <ul class="d-flex justify-content-center">
         <li class="ps-5 list-group-item"><a href="{{route('dashboard.produto')}}">Produto</a></li>
         <li class="ps-5 list-group-item"><a href="{{route('dashboard.categoria')}}">Categoria</a></li>
-        <li class="ps-5 list-group-item"><a href="">Administrador</a></li>
+        <li class="ps-5 list-group-item"><a href="{{route('dashboard.administrador')}}">Administrador</a></li>
       </ul>
        
       <div class="d-flex justify-content-end align-items-center" style="padding-right: 8rem;">

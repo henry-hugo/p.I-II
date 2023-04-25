@@ -5,6 +5,7 @@ use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\CarrinhoController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -25,6 +26,12 @@ route::post('/delete/categorias/{categoria}',[CategoriaController::class,'delete
 Route::get('\dashboard\categorias\cadastroCategoria', [CategoriaController::class, 'cadastroC'])->name('dashboard.cadastroCategoria');
 route::post('/categoria/create',[CategoriaController::class,'create'])->name('categoria.create');
 
+Route::get('\administrador', [RegisteredUserController::class, 'index'])->name('dashboard.administrador');
+Route::get('/administrador/{user}', [RegisteredUserController::class, 'show'])->name('administrador.show');
+route::post('/administrador/{user}',[RegisteredUserController::class,'storeA'])->name('administrador.store');
+Route::get('\administrador\cadastro', [RegisteredUserController::class, 'cadastroA'])->name('administrador.cadastro');
+route::post('adm/create',[RegisteredUserController::class,'store'])->name('administrador.create');
+route::post('administrador/delete/{user}',[RegisteredUserController::class,'delete'])->name('administrador.delete');
 
 Route::get('/', function () {
     return view('dashboard.index');
